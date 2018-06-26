@@ -14,8 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.contrib.auth.decorators import login_required
 from django.contrib import admin
+
+from revproxy.views import ProxyView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^vnc/(?P<path>.*)$', login_required(ProxyView.as_view(upstream='http://127.0.0.1:6080/'))),
 ]

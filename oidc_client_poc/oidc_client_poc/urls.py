@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 from django.contrib import admin
@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^accounts/login/$', auth_views.login, name='login'),
     url(r'^accounts/logout/$', auth_views.logout, name='logout'),
     url(r'^vnc/(?P<path>.*)$', login_required(ProxyView.as_view(upstream='http://127.0.0.1:6080/'))),
+    url(r'^oidc/', include('mozilla_django_oidc.urls')),
 ]

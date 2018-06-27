@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'revproxy',
+    'mozilla_django_oidc',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -102,6 +103,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of oidc
+    'django.contrib.auth.backends.ModelBackend',
+    # oidc backend
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+OIDC_RP_CLIENT_ID = os.environ['OIDC_RP_CLIENT_ID']
+OIDC_RP_CLIENT_SECRET = os.environ['OIDC_RP_CLIENT_SECRET']
+
+OIDC_OP_AUTHORIZATION_ENDPOINT = "https://deano-idp.nimbis.xyz/authorize/"
+OIDC_OP_TOKEN_ENDPOINT = "https://deano-idp.nimbis.xyz/token/"
+OIDC_OP_USER_ENDPOINT = "https://deano-idp.nimbis.xyz/userinfo/"
+
+LOGIN_REDIRECT_URL = "/accounts/login/"
+LOGOUT_REDIRECT_URL = "/accounts/login/"
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

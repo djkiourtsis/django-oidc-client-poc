@@ -55,7 +55,9 @@ ROOT_URLCONF = 'oidc_client_poc.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            '/home/centos/django-oidc-client/oidc_client_poc/oidc_client_poc/templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

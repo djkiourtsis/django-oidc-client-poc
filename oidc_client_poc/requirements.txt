@@ -1,2 +1,3 @@
 django
 django-revproxy
+mozilla-django-oidc

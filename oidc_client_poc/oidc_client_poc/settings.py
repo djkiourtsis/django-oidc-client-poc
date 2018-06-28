@@ -120,6 +120,8 @@ OIDC_OP_USER_ENDPOINT = "https://deano-idp.nimbis.xyz/userinfo/"
 LOGIN_REDIRECT_URL = "/accounts/login/"
 LOGOUT_REDIRECT_URL = "/accounts/login/"
 
+SECURE_PROXY_SSL_HEADER=('HTTP_X_FORWARDED_PROTO', 'https')
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 

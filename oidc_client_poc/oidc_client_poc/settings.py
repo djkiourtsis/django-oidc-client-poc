@@ -57,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            '/home/centos/django-oidc-client/oidc_client_poc/oidc_client_poc/templates',
+            '/home/centos/django-oidc-client-poc/oidc_client_poc/oidc_client_poc/templates',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -104,10 +104,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-    # Needed to login by username in Django admin, regardless of oidc
-    'django.contrib.auth.backends.ModelBackend',
     # oidc backend
-    'allauth.account.auth_backends.AuthenticationBackend',
+    'mozilla_django_oidc.auth.OIDCAuthenticationBackend',
 )
 
 OIDC_RP_CLIENT_ID = os.environ['OIDC_RP_CLIENT_ID']
